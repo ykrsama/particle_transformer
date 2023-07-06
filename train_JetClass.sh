@@ -22,16 +22,16 @@ else
     CMD="weaver"
 fi
 
-epochs=50
-samples_per_epoch=$((10000 * 1024 / $NGPUS))
-samples_per_epoch_val=$((10000 * 128))
-dataopts="--num-workers 2 --fetch-step 0.01"
+epochs=20
+samples_per_epoch=$((2000 * 1024 / $NGPUS))
+samples_per_epoch_val=$((2000 * 128))
+dataopts="--num-workers 0 --fetch-step 0.01"
 
 # PN, PFN, PCNN, ParT
 model=$1
 if [[ "$model" == "ParT" ]]; then
     modelopts="networks/example_ParticleTransformer.py --use-amp"
-    batchopts="--batch-size 512 --start-lr 1e-3"
+    batchopts="--batch-size 256 --start-lr 1e-3"
 elif [[ "$model" == "PN" ]]; then
     modelopts="networks/example_ParticleNet.py"
     batchopts="--batch-size 512 --start-lr 1e-2"
