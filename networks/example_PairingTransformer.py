@@ -26,15 +26,15 @@ def get_model(data_config, **kwargs):
         input_dim=len(data_config.input_dicts['pf_features']),
         num_classes=len(data_config.label_value),
         # network configurations
-        pair_input_dim=4,
+        pair_input_dim=8,
         use_pre_activation_pair=False,
-        embed_dims=[8, 16, 8],
-        pair_embed_dims=[6, 6, 6],
+        embed_dims=[32, 128, 32],
+        pair_embed_dims=[16, 16, 16],
         num_heads=8,
         num_layers=8,
         num_cls_layers=2,
         block_params=None,
-        cls_block_params={'dropout': 0, 'attn_dropout': 0, 'activation_dropout': 0},
+        cls_block_params={'dropout': 0.1, 'attn_dropout': 0, 'activation_dropout': 0},
         fc_params=[],
         activation='gelu',
         # misc
@@ -59,4 +59,3 @@ def get_model(data_config, **kwargs):
 
 def get_loss(data_config, **kwargs):
     return torch.nn.CrossEntropyLoss()
-    # return torch.nn.MSELoss()

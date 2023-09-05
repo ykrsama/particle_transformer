@@ -36,8 +36,6 @@ inputs:
       ###              pad_value(optional, default=0)]
          - [jets_pt_log, 1.7, 0.7]
          - [jets_E_log, 2.0, 0.7]
-         - [jets_eta, null]
-         - [jets_phi, null]
          - [jets_DL1dv01, null]
    pf_vectors:
       length: 8
@@ -67,7 +65,6 @@ labels:
 observers:
   - mcEventNumber
   - mcEventWeight
-  - nBTags
   - truth_mHHH
 
 
